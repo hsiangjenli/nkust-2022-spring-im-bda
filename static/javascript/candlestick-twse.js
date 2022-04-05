@@ -73,10 +73,10 @@ d3.csv('http://127.0.0.1:8000/api_twii', function (err, rows) {
 
     var traceTWSE = {
         x: unpack(rows, 'Date'),
-        close: unpack(rows, 'Closing Index'),
-        high: unpack(rows, 'Highest Index'),
-        low: unpack(rows, 'Lowest Index'),
-        open: unpack(rows, 'Opening Index'),
+        close: unpack(rows, 'C'),
+        high: unpack(rows, 'H'),
+        low: unpack(rows, 'L'),
+        open: unpack(rows, 'O'),
 
         // cutomise colors
         increasing: { line: { color: '#d92323' } },
@@ -103,20 +103,26 @@ d3.csv('http://127.0.0.1:8000/api_twii', function (err, rows) {
                 y: 1.2,
                 xanchor: 'left',
                 font: { size: 8 },
-                buttons: [{
-                    step: 'month',
-                    stepmode: 'backward',
-                    count: 1,
-                    label: '1 month'
-                }, {
-                    step: 'month',
-                    stepmode: 'backward',
-                    count: 6,
-                    label: '6 months'
-                }, {
-                    step: 'all',
-                    label: 'All dates'
-                }]
+                buttons: [
+                    {
+                        step: 'month',
+                        stepmode: 'backward',
+                        count: 1,
+                        label: '1 month'
+                    }, {
+                        step: 'month',
+                        stepmode: 'backward',
+                        count: 3,
+                        label: '3 month'
+                    }, {
+                        step: 'month',
+                        stepmode: 'backward',
+                        count: 6,
+                        label: '6 months'
+                    }, {
+                        step: 'all',
+                        label: 'All dates'
+                    }]
             }
         },
         yaxis: {
