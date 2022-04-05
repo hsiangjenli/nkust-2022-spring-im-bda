@@ -9,11 +9,11 @@ const layout = {
     },
 
     paper_bgcolor: 'rgba(0,0,0,0)',
-    plot_bgcolor: 'rgba(0,0,0,0)',
+    // plot_bgcolor: 'rgba(0,0,0,0)',
 };
 
 const config = {
-    displayModeBar: false,
+    // displayModeBar: false,
     // responsive: true,
 };
 
@@ -29,7 +29,7 @@ const config = {
 // Plotly.newPlot('myDiv', data, layout, config);
 
 
-d3.csv('http://127.0.0.1:8000/api_twii_5mins', function (err, rows) {
+d3.csv('http://127.0.0.1:8000/api_twii_5secs', function (err, rows) {
 
     function unpack(rows, key) {
         return rows.map(function (row) {
