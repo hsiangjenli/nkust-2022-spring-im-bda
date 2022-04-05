@@ -10,7 +10,12 @@ def api_twii(request):
     with open('app__home_page/dataset/twii.csv', encoding = 'utf-8') as myfile:
         response = HttpResponse(myfile, content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename=app__home_page/dataset/twii.csv'
-        print(response)
+        return response
+
+def api_twii_5mins(request):
+    with open('app__home_page/dataset/twii_5mins.csv', encoding = 'utf-8') as myfile:
+        response = HttpResponse(myfile, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename=app__home_page/dataset/twii_5mins.csv'
         return response
 
 

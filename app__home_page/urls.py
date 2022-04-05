@@ -6,5 +6,6 @@ app_name = 'app__home_page'
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('api_twii', views.api_twii, name='api_twii')
+    path('api_twii', views.api_twii, name='api_twii'),
+    path('api_twii_5mins', views.api_twii_5mins, name='api_twii_5mins'),
 ]
