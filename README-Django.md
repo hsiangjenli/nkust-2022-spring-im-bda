@@ -11,7 +11,7 @@ django-admin startapp app__home_page
 python manage.py runserver
 ```
 
-## website_configs/settings.py
+## `website_configs/settings.py`
 ```python
 ALLOWED_HOSTS = ['*'] # Allow all hosts.
 
@@ -44,7 +44,7 @@ TEMPLATES = [
 ]
 ```
 ## Homepage's urls
-### Create urls.py at app__home_page
+### Create `urls.py` at **app__home_page**
 ```python
 from django.urls import path
 from app__home_page import views
@@ -67,10 +67,10 @@ urlpatterns = [
     path('', include('app__home_page.urls')), # Add
 ]
 ```
-### Create templates/app__home_page/home.html at app__home_page
+### Create `templates/app__home_page/home.html` at **app__home_page**
 
 ## Create a global static folder
-### Add these codes at website_configs/settings.py
+### Add these codes at `website_configs/settings.py`
 ```python
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
@@ -78,8 +78,8 @@ STATICFILES_DIRS = (
 )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 ```
-### Create static/images folder
-### Load static folder in app__home_page/home.html
+### Create `static/images` folder
+### Load static folder in `app__home_page/home.html`
 
 ```html
 {% load static %}
