@@ -127,7 +127,7 @@ d3.csv('http://127.0.0.1:8000/api_twii', function (err, rows) {
         },
         yaxis: {
             autorange: true,
-        }
+        },
     };
 
     Plotly.newPlot('myDiv2', dataTWSE, layout);
