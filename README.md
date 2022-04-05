@@ -9,7 +9,12 @@ My warning paragraph.{: .alert .alert-warning}
 > ⚠️ 僅供學習使用
 
 - [ ] Taiwan Stock Exchange Corporation｜台灣證券交易所
+   - [x] [發行量加權股價指數｜歷史資料](https://www.twse.com.tw/zh/page/trading/indices/MI_5MINS_HIST.html)
+   - [x] [發行量加權股價指數｜每5秒指數統計](https://www.twse.com.tw/zh/page/trading/exchange/MI_5MINS_INDEX.html)
 - [ ] ANUE｜鉅亨網
+   - [ ] 台灣政經
+   - [ ] 國際政經
+   - [ ] 中國政經
 - [ ] 中研院斷詞套件
 - [ ] Wordcloud
 - [ ] [Bootswatch](https://bootswatch.com/flatly/)
@@ -39,5 +44,11 @@ pip install requirements.txt
 python manage.py runserver
 ```
 
+## Screenshot
+![Image](https://i.imgur.com/Gk6Xt5a.png)
+
 ---
 1. [plotly js remove title and title area](https://stackoverflow.com/questions/38406525/plotly-js-remove-title-and-title-area)
+
+
+![Image](https://i.imgur.com/RYbwrdo.png)
