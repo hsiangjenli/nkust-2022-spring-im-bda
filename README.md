@@ -8,12 +8,14 @@
 
 > ⚠️ 僅供學習使用
 
-- [ ] Taiwan Stock Exchange Corporation｜台灣證券交易所
+### Dataset
+- [x] Taiwan Stock Exchange Corporation｜台灣證券交易所
    - [x] [發行量加權股價指數｜歷史資料](https://www.twse.com.tw/zh/page/trading/indices/MI_5MINS_HIST.html)
    - [x] [發行量加權股價指數｜每5秒指數統計](https://www.twse.com.tw/zh/page/trading/exchange/MI_5MINS_INDEX.html)
+
 - [ ] ANUE｜鉅亨網
    - [ ] Taiwan
-      - [ ] 台股新聞 `tw_stock_news`
+      - [x] 台股新聞 `tw_stock_news`
       - [ ] 台灣政經 `tw_macro`
       - [ ] 台股盤勢 `tw_quo`
    - [ ] Western
@@ -23,24 +25,27 @@
    - [ ] China
       - [ ] 中國政經 `cn_macro`
       - [ ] 港股 `hk_stock`
-      - [ ] A股 `sh_stock`
-- [ ] 中研院斷詞套件
+      - [ ] A股 `sh_stock`  
+
+### Library
+- [x] [CKIP｜ckiptagger](https://github.com/ckiplab/ckiptagger)
 - [ ] Wordcloud
-- [ ] [Bootswatch](https://bootswatch.com/flatly/)
-- [x] [Components｜Plotly](https://plotly.com/javascript/)
-- [ ] [Components｜Fusion Chart｜Free Licenses for Non-Commercial Use](https://www.fusioncharts.com/)
+
+### Website Design
+- [ ] [Components｜CSS｜Bootswatch](https://bootswatch.com/flatly/)
+- [x] [Components｜Chart｜Plotly](https://plotly.com/javascript/)
+- [ ] [Components｜Chart｜Fusion Chart](https://www.fusioncharts.com/)
 - [x] [Components｜Side nav｜Bootstrap 5 sidebar menu with toggle button](https://bbbootstrap.com/snippets/bootstrap-5-sidebar-menu-toggle-button-34132202)
 - [x] [Components｜Footer｜MDB](https://mdbootstrap.com/docs/standard/navigation/footer/)
-- [x] [Icon-stock｜icon-park-outline:stock-market](https://icon-sets.iconify.design/icon-park-outline/stock-market/)
-- [x] 
+- [x] [Components｜Icon｜Iconify Design](https://icon-sets.iconify.design/)
 
 ## Clone this repository
 ```shell
-git clone https://github.com/hsiangjenli/NKUST-1102-Django-POA__Midterm-Project.git
+git clone https://gitlab.com/hsiangjenli/NKUST-1102-Django-POA-Midterm-Project.git
 ```
 ## Create virtual env
 ```python
-conda create ai23 python=3.7
+conda create --name ai23 python=3.7
 activate ai23
 ```
 ### Installation of requirements
