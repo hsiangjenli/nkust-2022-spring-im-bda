@@ -1,8 +1,8 @@
-# NKUST-1102-Django-POA__Midterm-Project
-My warning paragraph.{: .alert .alert-warning}
+# **NKUST-1102-Django-POA__Midterm-Project**
+
 > 🏫 NKUST  
 > 📅 110-2  
-> 😶 Hsiang-Jen Li (DMB-C107125248) 
+> 😶 李享紝｜Hsiang-Jen Li｜DMB-C107125248
 
 ## About this project
 
@@ -12,9 +12,18 @@ My warning paragraph.{: .alert .alert-warning}
    - [x] [發行量加權股價指數｜歷史資料](https://www.twse.com.tw/zh/page/trading/indices/MI_5MINS_HIST.html)
    - [x] [發行量加權股價指數｜每5秒指數統計](https://www.twse.com.tw/zh/page/trading/exchange/MI_5MINS_INDEX.html)
 - [ ] ANUE｜鉅亨網
-   - [ ] 台灣政經
-   - [ ] 國際政經
-   - [ ] 中國政經
+   - [ ] Taiwan
+      - [ ] 台股新聞 `tw_stock_news`
+      - [ ] 台灣政經 `tw_macro`
+      - [ ] 台股盤勢 `tw_quo`
+   - [ ] Western
+      - [ ] 國際政經 `wd_macro`
+      - [ ] 美股 `us_stock`
+      - [ ] 歐亞股 `eu_asia_stock`
+   - [ ] China
+      - [ ] 中國政經 `cn_macro`
+      - [ ] 港股 `hk_stock`
+      - [ ] A股 `sh_stock`
 - [ ] 中研院斷詞套件
 - [ ] Wordcloud
 - [ ] [Bootswatch](https://bootswatch.com/flatly/)
