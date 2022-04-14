@@ -1,7 +1,7 @@
 # **NKUST-1102-Django-POA__Midterm-Project**
 
 > 🏫 NKUST  
-> 📅 110-2  
+> 📅 110-2 (2022)  
 > 😶 李享紝｜Hsiang-Jen Li｜DMB-C107125248
 
 ## About this project
