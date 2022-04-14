@@ -2,7 +2,7 @@
 
 > 🏫 NKUST  
 > 📅 110-2 (2022)  
-> 😶 李享紝｜Hsiang-Jen Li｜DMB-C107125248
+> 😶 李享紝｜Hsiang-Jen Li｜金融系 DMB-C107125248
 
 ## About this project
 
