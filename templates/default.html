@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <title>輿情分析系統</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+
+    <link href="{% static 'css/global.css' %}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/hsiangjenli/hsiangjenli/main/Profiles/Geo__cat_01.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    {% include 'nav.html' %}
+    <div class="block-content">
+        {% block content %}{% endblock %}
+    </div>
+    
+</body>
+
+</html>
+{%include 'footer.html' %}
+
+{% block js %}{% endblock %}

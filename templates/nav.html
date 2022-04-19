@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'app__home_page:home' %}">
+        <img src="https://raw.githubusercontent.com/hsiangjenli/hsiangjenli/main/Profiles/Geo__cat_01.png" height="30"
+            class="d-inline-block align-top" alt="">
+        POA
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="{% url 'app__home_page:home' %}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="{% url 'app__overview:home' %}">Overview</a>
+            <a class="nav-item nav-link" href="{% url 'app__user_key:home' %}">User Key</a>
+            <a class="nav-item nav-link" href="https://gitlab.com/hsiangjenli"><img class='icon'
+                src="https://img.icons8.com/color/48/000000/gitlab.png" /></a>
+
+        </div>
+    </div>
+</nav>

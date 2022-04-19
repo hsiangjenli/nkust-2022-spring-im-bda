@@ -79,8 +79,8 @@ d3.csv('http://127.0.0.1:8000/api_twii', function (err, rows) {
         open: unpack(rows, 'O'),
 
         // cutomise colors
-        increasing: { line: { color: '#d92323' } },
-        decreasing: { line: { color: '#23d932' } },
+        increasing: { line: { color: '#C0AA7A' } },
+        decreasing: { line: { color: '#D9D9D9' } },
 
         type: 'candlestick',
         xaxis: 'x',
@@ -130,5 +130,5 @@ d3.csv('http://127.0.0.1:8000/api_twii', function (err, rows) {
         },
     };
 
-    Plotly.newPlot('myDiv2', dataTWSE, layout);
+    Plotly.newPlot('twse-history', dataTWSE, layout);
 });

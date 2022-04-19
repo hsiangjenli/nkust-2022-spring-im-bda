@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app__home_page', # Add new app.
+    'app__api',
 ]
 
 import os
