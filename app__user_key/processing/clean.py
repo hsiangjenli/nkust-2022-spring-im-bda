@@ -14,7 +14,7 @@ news_categories = ['tw_stock_news',
                    '全部']
 
 def filter_dataFrame_fullText(df, user_keywords, cond, cate, weeks):
-
+    
     # end date: the date of the latest record of news
     end_date = df.Date.max()
     # end_date = datetime.strptime(end_date, '%Y-%m-%d %H:%M:%S')

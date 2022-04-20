@@ -25,3 +25,6 @@ def api_twii_5mins(request):
     }
     twii5minsJson.update(outputsRiseFall)
     return JsonResponse(twii5minsJson, safe=False)
+
+
+

@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'app__home_page', # Add new app.
     'app__overview',
     'app__user_key',
+    'app__top_freq',
+    'app__top_person',
     'app__api',
 ]
 
