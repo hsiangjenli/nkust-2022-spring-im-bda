@@ -13,7 +13,7 @@ catTaiwan = ['tw_stock_news', 'tw_macro', 'tw_quo']
 def api_twii_5mins(request):
 
     twii5mins = pd.read_csv('app__api/dataset/twii_5_mins.csv')
-    fromMongoDB = pd.read_csv('app__api/dataset/from_Monogo_DB.csv')
+    fromMongoDB = pd.read_csv('app__api/dataset/fromMonogoDB.csv')
 
     color = '#C0AA7A' if twii5mins['TAIEX'][0] > twii5mins['TAIEX'].iloc[-1] else '#D9D9D9'
     outputsRiseFall = CountRiseFall(df=fromMongoDB, cats=catTaiwan)
