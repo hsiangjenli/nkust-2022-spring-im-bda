@@ -4,9 +4,15 @@ from django.views.decorators.csrf import csrf_exempt
 import pymongo
 import pandas as pd
 from .processing import *
+from datetime import datetime
 
 
-df = LoadData()#pd.read_csv('app__api/dataset/from_Monogo_DB.csv')
+def StringToDatetime(x):
+    '''Data from MongoDB'''
+    return datetime.strptime(x, '%Y-%m-%d %H:%M:%S')
+
+df = pd.read_csv('app__api/dataset/fromMonogoDB.csv')#LoadData()
+df['Date'] = df['Date'].apply(StringToDatetime)
 
 
 def home(request):

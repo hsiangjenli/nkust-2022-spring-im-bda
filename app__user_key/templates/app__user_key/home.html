@@ -16,15 +16,13 @@
                 <div class="form-group row">
                     <label class="col-md-3 form-control-label">關鍵詞</label>
                     <div class="col-md-9">
-                        <input id="input_keyword" name="userkey" value="台灣"
-                            class="form-control form-control-success">
+                        <input id="input_keyword" name="userkey" value="台灣" class="form-control form-control-success">
                     </div>
                 </div>
                 <div class="row">
                     <label class="col-sm-3 form-control-label">條件</label>
                     <div class="col-md-9 radio mb-3">
-                        <label class="radio-inline"><input type="radio" value="and" name="condradio"
-                                checked>and</label>
+                        <label class="radio-inline"><input type="radio" value="and" name="condradio" checked>and</label>
                         <label class="radio-inline"><input type="radio" value="or" name="condradio">or</label>
                     </div>
                 </div>
@@ -33,14 +31,15 @@
                     <label class="col-sm-3 form-control-label">新聞類別</label>
                     <div class="col-md-9">
 
-                        <label class="radio-inline"><input type="radio" value="全部" name="cateradio"
-                                checked>全部</label>
-                        <label class="radio-inline"><input type="radio" value="tw_stock_news" name="cateradio">台股新聞</label>
+                        <label class="radio-inline"><input type="radio" value="全部" name="cateradio" checked>全部</label>
+                        <label class="radio-inline"><input type="radio" value="tw_stock_news"
+                                name="cateradio">台股新聞</label>
                         <label class="radio-inline"><input type="radio" value="tw_macro" name="cateradio">台灣政經</label>
                         <label class="radio-inline"><input type="radio" value="tw_quo" name="cateradio">台股盤勢</label>
                         <label class="radio-inline"><input type="radio" value="wd_macro" name="cateradio">國際政經</label>
                         <label class="radio-inline"><input type="radio" value="us_stock" name="cateradio">美股</label>
-                        <label class="radio-inline"><input type="radio" value="eu_asia_stock" name="cateradio">歐亞股</label>
+                        <label class="radio-inline"><input type="radio" value="eu_asia_stock"
+                                name="cateradio">歐亞股</label>
                         <label class="radio-inline"><input type="radio" value="cn_macro" name="cateradio">中國政經</label>
                         <label class="radio-inline"><input type="radio" value="hk_stock" name="cateradio">港股</label>
                         <label class="radio-inline"><input type="radio" value="sh_stock" name="cateradio">A股</label>
@@ -50,8 +49,7 @@
                     <label class="col-md-3 form-control-label">最近多少周?</label>
                     <div class="col-md-9">
                         <label class="radio-inline"><input type="radio" value="1" name="wkradio">1</label>
-                        <label class="radio-inline"><input type="radio" value="2" name="wkradio"
-                                checked>2</label>
+                        <label class="radio-inline"><input type="radio" value="2" name="wkradio" checked>2</label>
                         <label class="radio-inline"><input type="radio" value="3" name="wkradio">3</label>
                         <label class="radio-inline"><input type="radio" value="4" name="wkradio">4</label>
                         <label class="radio-inline"><input type="radio" value="6" name="wkradio">6</label>
@@ -166,15 +164,20 @@
 
                 //將內容加上li標籤附加起來顯示
                 for (let key in article_count) {
-                    let paste = '<li class="list-group-item">' + key + '&nbsp;' + '<span class="badge badge-light">' + article_count[key] + '</span></li>';
-                    $('#keyword_article_count').append(paste);
+                    if (article_count[key] > 0) {
+                        let paste = '<li class="list-group-item">' + key + '&nbsp;' + '<span class="badge badge-light">' + article_count[key] + '</span></li>';
+                        $('#keyword_article_count').append(paste);
+                    }
                 }
                 const kwfreq = received['key_freq_cat'];
                 console.log(kwfreq);
                 $('#keyword_frequency').empty();
                 for (let key in kwfreq) {
-                    let paste = '<li class="list-group-item">' + key + '&nbsp;' + '<span class="badge badge-light">' + kwfreq[key] + '</span></li>';
-                    $('#keyword_frequency').append(paste);
+                    if (kwfreq[key] > 0) {
+                        let paste = '<li class="list-group-item">' + key + '&nbsp;' + '<span class="badge badge-light">' + kwfreq[key] + '</span></li>';
+                        $('#keyword_frequency').append(paste);
+                    }
+
                 }
 
                 const data_key_time_freq = received['key_time_freq'];
@@ -186,7 +189,7 @@
     } //call_ajax()
 
     let ctx_key_time = document.getElementById("keyword_time_line_chart").getContext('2d');
-    
+
     //let chart = null; //chart全域變數 
 
     function showtimechart(data_key_time_freq) {

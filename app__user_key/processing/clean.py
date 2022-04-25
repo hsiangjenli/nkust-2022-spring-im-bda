@@ -13,6 +13,8 @@ news_categories = ['tw_stock_news',
                    'sh_stock',
                    '全部']
 
+
+
 def filter_dataFrame_fullText(df, user_keywords, cond, cate, weeks):
     
     # end date: the date of the latest record of news
@@ -53,12 +55,24 @@ def count_keyword(query_df, user_keywords):
         cate_occurence['全部'] += 1
         
         # count user keyword frequency by checking every word in tokens_v2
-        tokens = np.squeeze(row.tokens_v2).tolist() #row.tokens_v2 #eval(row.tokens_v2)
+        '''
+        使用Mongo DB
+        # tokens = np.squeeze(row.tokens_v2).tolist()
+
+        使用DataFrame
+        # tokens = eval(row.tokens_v2)
+        # tokens = [e[0] for e in tokens]
+        '''
+        tokens = eval(row.tokens_v2)
+        tokens = [e[0] for e in tokens]
         freq =  len([word for word in tokens if (word in user_keywords)])
+        
+        
         cate_freq[row.Category] += freq
         cate_freq['全部'] += freq
-        
+    
     return cate_freq, cate_occurence
+
 def get_keyword_time_based_freq(df_query):
     date_samples = df_query.Date
     query_freq = pd.DataFrame({'date_index': pd.to_datetime(date_samples), 'freq': [1 for _ in range(len(df_query))]})
