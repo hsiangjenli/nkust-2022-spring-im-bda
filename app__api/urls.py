@@ -6,4 +6,5 @@ app_name = 'app__api'
 
 urlpatterns = [
     path('api/twii_5_mins', views.api_twii_5mins, name='api_twii_5mins'),
+    path('api/twii_history', views.api_twii, name='api_twii_history')
 ]
