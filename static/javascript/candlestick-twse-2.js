@@ -63,7 +63,7 @@
 // });
 
 
-d3.csv('http://127.0.0.1:8000/api_twii', function (err, rows) {
+d3.csv('http://127.0.0.1:8000/api/twii_history', function (err, rows) {
 
     function unpack(rows, key) {
         return rows.map(function (row) {

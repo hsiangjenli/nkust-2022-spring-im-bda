@@ -7,6 +7,10 @@
     --red: #d92323;
     --green: #23d932;
 }
+.btn {
+    background-color: var(--main-color-yellow);
+    color: white;
+}
 small a {
     color: var(--main-color-yellow) !important;
 }
@@ -14,6 +18,7 @@ small a {
 .row {
     padding: 2rem;
 }
+
 .blur {
     filter: blur(3px) grayscale(70%);
     width: 100%;
@@ -22,7 +27,7 @@ small a {
 }
 
 .block-content {
-    padding:  calc(10% - 80px);
+    padding: calc(10% - 80px);
     padding-top: 1rem;
     padding-right: calc(20% - 80px);
     padding-left: calc(20% - 80px);
@@ -37,12 +42,19 @@ small a {
     color: var(--main-color-yellow);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: bolder;
 }
+
 h1 {
     margin-bottom: 1rem;
 }
+
 .font-bold {
     font-weight: bolder;
 }
@@ -56,6 +68,8 @@ h1 {
 .red {
     color: var(--main-color-yellow)
 }
+
+
 .green {
     color: var(--main-color-grey)
 }
@@ -74,3 +88,9 @@ h1 {
     background-color: var(--main-color-yellow);
     padding: 2rem;
 }
+
+.fix-height {
+    height: 100%;
+    width: 100%;
+}
+  

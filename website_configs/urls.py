@@ -22,7 +22,7 @@ urlpatterns = [
     path('', include('app__home_page.urls')),
     path('', include('app__overview.urls')),
     path('', include('app__user_key.urls')),
-    path('', include('app__top_freq.urls')),
     path('', include('app__top_person.urls')),
     path('', include('app__api.urls')),
+    path('', include('app__user_key_sentiment.urls')),
 ]
