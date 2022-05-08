@@ -55,14 +55,14 @@
                         <label class="radio-inline"><input type="radio" value="6" name="wkradio">6</label>
                         <label class="radio-inline"><input type="radio" value="8" name="wkradio">8</label>
                         <label class="radio-inline"><input type="radio" value="12" name="wkradio">12</label>
-                        <small class="form-text text-muted">以最新資料時間為準，往前推多少周?</small>
+                        
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-md-9 ml-auto">
-                        <button type="button" id="btn_ok" class="btn btn-primary">查詢</button>
+                
+                    <div align="center">
+                        <button type="button" id="btn_ok" class="btn">查詢</button>
                     </div>
-                </div>
+                
             </div>
         </div>
     </div><!-- 輸入區塊結束-->
@@ -74,10 +74,15 @@
                 <h6 class="text-uppercase mb-0"><i class="fa-solid fa-chart-line icon"></i> 出現頻率以時間呈現</h6>
             </div>
             <div class="card-body">
+                <br>
+                <br>
                 <small>觀察每個時間點的有多少篇報導(聲量大小)</small>
                 <div class="row">
+                    
                     <canvas id="keyword_time_line_chart"></canvas>
+                    
                 </div>
+                <br><br>
             </div>
         </div>
     </div><!-- 區塊結束-->
@@ -149,7 +154,7 @@
 
         $.ajax({
             type: "POST",
-            url: "api_get_top_userkey/",
+            url: "api/top_userkey/",
             data: {
                 "userkey": userkey,
                 'cate': cate,
