@@ -17,7 +17,7 @@ def NerToken(word, ner, idx):
 @csrf_exempt
 def api_post_top_person(request):
 
-    df = pd.read_csv('app__api/dataset/from_Monogo_DB.csv')
+    df = pd.read_csv('app__api/dataset/fromMonogoDB.csv')
 
     cat = request.POST.get('news_category')
     topk = request.POST.get('topk')
@@ -28,7 +28,10 @@ def api_post_top_person(request):
     df_cat = df[df.Category == cat] if cat != '全部' else df
 
     for ne in df_cat.entities:
-        allNE += eval(ne)
+        if str(ne) == 'nan':
+            pass
+        else:
+            allNE += eval(ne)
 
     filtered_words = []
     for ner, word in allNE:
