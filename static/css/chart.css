@@ -1,0 +1,9 @@
+.show-chart {
+    position: relative;
+    margin: auto;
+    width: calc(50% + 220px);
+  }
+
+.show-emoji {
+    width: calc(13% + 120px);
+}

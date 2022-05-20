@@ -77,8 +77,8 @@ $.ajax({
                 t: 30,
                 pad: -20
             },
-
-            // paper_bgcolor: 'rgba(0,0,0,0)',
+            // plot_bgcolor: '#F9F7F3',
+            // paper_bgcolor: '#F9F7F3',
             yaxis: {
                 range: [min - 50, max + 50],
                 fixedrange: true,

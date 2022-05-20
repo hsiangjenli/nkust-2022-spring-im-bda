@@ -90,6 +90,8 @@ d3.csv('http://127.0.0.1:8000/api/twii_history', function (err, rows) {
     var dataTWSE = [traceTWSE];
 
     var layout = {
+        plot_bgcolor: '#F9F7F3',
+        paper_bgcolor: '#F9F7F3',
         dragmode: 'zoom',
         showlegend: false,
         xaxis: {
