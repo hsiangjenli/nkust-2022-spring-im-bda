@@ -18,7 +18,8 @@
 
 <body>
     {% include 'nav.html' %}
-    <div class="block-content">
+    {% block cover-image %}{% endblock %}
+    <div>
         {% block content %}{% endblock %}
     </div>
     
