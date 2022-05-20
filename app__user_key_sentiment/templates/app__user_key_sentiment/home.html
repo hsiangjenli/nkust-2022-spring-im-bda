@@ -1,14 +1,11 @@
 {% extends 'default.html' %}
+{% load static %}
 
-{% block content %}
 
-<div class="row row-eq-height">
-
-  <div class="col-lg-12">
-    <h1>你關心的關鍵詞的情緒分析</h1>
-    <p>可以了解媒體對該關鍵詞的情緒程度</p>
-  </div>
-  <div class="col">
+{% block cover-image %}
+<img class='cover-image' width='100%' src="{% static 'images/Cover__app__user_key_sentiment.png' %}">
+<div class="row block-content">
+  <div class="col-lg-12 mb-2">
     <!-- 輸入條件區塊開始 -->
     <div class="card">
       <div class="card-header">
@@ -17,11 +14,11 @@
       <div class="card-body">
         <div class="form-group row">
           <label class="col-md-3 form-control-label">關鍵詞</label>
-          <div class="col-md-9">
+          <div class="col-md-8">
             <input id="input_keyword" name="userkey" value="台灣" class="form-control form-control-success" />
-            <small class="form-text text-muted">查找的關鍵字(或片段文字)，可輸入多個，空白隔開。
-            </small>
           </div>
+          <button type="button" id="btn_ok" class="btn">查詢</button>
+
         </div>
 
         <div class="row">
@@ -65,48 +62,29 @@
       </div>
     </div>
   </div>
-  <!-- 輸入區塊結束-->
+</div>
 
-  <!-- 顯示區塊-->
-  <div class="col">
-    <div class="card">
-      <div class="card-header">
-        <h6 class="text-uppercase mb-0"><i class="fas fa-dizzy red"></i> 情緒分析</h6>
-      </div>
-      <div class="card-body">
-        <div class="row">
-          <canvas id="article_senti_pie_chart"></canvas>
-        </div>
-        <div>
-          <br>
-          <div align='center' style='font-weight: bolder;' id="senti_info"></div>
-          <br>
-        </div>
-      </div>
-    </div>
+
+<div class="bg-red">
+  <div class="card-header">
+    <br>
+    <h6 class="text-uppercase mb-0"><i class="fas fa-dizzy red"></i> 情緒分析</h6>
   </div>
-  <!-- 區塊結束-->
+  <div class="row block-content">
 
+    <div class="col-lg-2 center vcenter-item">
+      <div id="article_senti_emoji"></div>
+    </div>
+    <div class="col-lg-4 center vcenter-item"><canvas id="article_senti_pie_chart"></canvas><br>
+      <div style='font-weight: bolder;' id="senti_info"></div>
+    </div>
+    <div class="col-lg-6 center vcenter-item">
+      <canvas id="time_line_chart"></canvas>
+    </div>
+
+  </div>
 
 </div>
-<!-- 顯示區塊-->
-<div class="row">
-  <div class="col-lg-12 mb-12">
-    <div class="card">
-      <div class="card-header">
-        <h6 class="text-uppercase mb-0"><i class="fa-solid fa-chart-line icon"></i> 正反面情緒變化</h6>
-      </div>
-      <div class="card-body">
-        <small>每個時間點的正反面報導的篇數(每天統計，6周含以上以5天為單位統計)</small>
-        <div class="row">
-          <canvas height='100px' id="time_line_chart"></canvas>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- 區塊結束-->
-
 {% endblock %}
 
 
@@ -169,10 +147,14 @@
       },
       success: function (received) {
         const data_pie = received["sentiCount"];
+        const emoji_src = received["sentiEmoji"];
         if (window.piechart) piechart.destroy();
         piechart = drawPieChart(piechartElem, data_pie);
 
         var colors = ["#C0AA7A", "#404040", "#D9D9D9"]
+
+        $('#article_senti_emoji').empty();
+        $('#article_senti_emoji').append("<img class='show-emoji' src='/static/images/" + emoji_src + "'>")
 
         $("#senti_info").empty();
         // for (let k in data_pie) {
@@ -197,18 +179,21 @@
 
   // PieChart function寫法
   function drawPieChart(chartElem, data_pie) {
-    let chartSpec = {
-      type: "pie",
+
+    const chartSpec = {
+      type: "doughnut",
+
       data: {
         labels: ["正面", "負面", "中立"],
         datasets: [
           {
             data: [data_pie['pos'], data_pie['neg'], data_pie['neutral']],
             backgroundColor: ["#C0AA7A", "#404040", "#D9D9D9"],
+
           },
         ],
       },
-      options: {},
+
     };
     return new Chart(chartElem, chartSpec);
   }

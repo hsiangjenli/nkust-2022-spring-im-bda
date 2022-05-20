@@ -5,6 +5,7 @@ import app__api.views as api
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime, timedelta
 import pandas as pd
+import numpy as np
 
 global df
 df = api.df
@@ -52,9 +53,10 @@ def get_article_sentiment(df_query):
     sentiCount = {'pos': 0, 'neg': 0, 'neutral': 0}
     sentiPercnt = {'pos': 0, 'neg': 0, 'neutral': 0}
     numberOfArticle = len(df_query)
+
     for senti in df_query.sentiment:
         # 判斷文章的情緒極性
-        if senti >= 0.75:
+        if senti >= 0.6:
             sentiCount['pos'] += 1
         elif senti <= 0.4:
             sentiCount['neg'] += 1
@@ -108,10 +110,15 @@ def prepare_for_response(query_keywords, cond, cate, weeks):
     line_data_pos = get_daily_basis_sentiment_count(df_query, sentiment_type='pos', freq_type=freq_type)
     line_data_neg = get_daily_basis_sentiment_count(df_query, sentiment_type='neg', freq_type=freq_type)
 
+    emojis = ['Emoji__pos.png', 'Emoji__neg.png', 'Emoji__neural.png']
+    emoji_loc = np.argmax(list(sentiCount.values()))
+    
+
     response = {
         'sentiCount': sentiCount,
         'data_pos':line_data_pos,
         'data_neg':line_data_neg,
+        'sentiEmoji': emojis[emoji_loc],
     }
     return response
 
