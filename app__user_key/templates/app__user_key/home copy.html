@@ -1,11 +1,12 @@
 {% extends 'default.html' %}
-{% load static %}
 
+{% block content %}
+<div class="row">
 
-{% block cover-image %}
-<img width='100%' src="{% static 'images/Cover__app__user_key.png' %}">
-<div class="row block-content">
-    <div class="col-lg-12 mb-2">
+    <div class="col-lg-12">
+        <h1>關鍵詞分析</h1>
+    </div>
+    <div class="col-lg-6 mb-2">
         <!-- 輸入條件區塊開始 -->
         <div class="card">
             <div class="card-header">
@@ -14,20 +15,15 @@
             <div class="card-body">
                 <div class="form-group row">
                     <label class="col-md-3 form-control-label">關鍵詞</label>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <input id="input_keyword" name="userkey" value="台灣" class="form-control form-control-success">
                     </div>
-                    <button type="button" id="btn_ok" class="btn">查詢</button>
-                    <!-- <div align="center">
-                        <button type="button" id="btn_ok" class="btn">查詢</button>
-                    </div> -->
                 </div>
                 <div class="row">
                     <label class="col-sm-3 form-control-label">條件</label>
                     <div class="col-md-9 radio mb-3">
-                        <label class="radio-inline"><input type="radio" value="and" name="condradio" checked>
-                            AND</label>
-                        <label class="radio-inline"><input type="radio" value="or" name="condradio"> OR</label>
+                        <label class="radio-inline"><input type="radio" value="and" name="condradio" checked>and</label>
+                        <label class="radio-inline"><input type="radio" value="or" name="condradio">or</label>
                     </div>
                 </div>
 
@@ -59,34 +55,39 @@
                         <label class="radio-inline"><input type="radio" value="6" name="wkradio">6</label>
                         <label class="radio-inline"><input type="radio" value="8" name="wkradio">8</label>
                         <label class="radio-inline"><input type="radio" value="12" name="wkradio">12</label>
-
+                        
                     </div>
                 </div>
-
-
-
+                
+                    <div align="center">
+                        <button type="button" id="btn_ok" class="btn">查詢</button>
+                    </div>
+                
             </div>
         </div>
     </div><!-- 輸入區塊結束-->
-</div>
 
-<div class="bg-red">
-    <div class="col">
-        <div class="card-header">
-            <br>
-            <h6 class="text-uppercase mb-0"><i class="fa-solid fa-chart-line icon"></i> 出現頻率以時間呈現</h6>
+    <!-- 顯示區塊-->
+    <div class="col-lg-6 mb-2">
+        <div class="card">
+            <div class="card-header">
+                <h6 class="text-uppercase mb-0"><i class="fa-solid fa-chart-line icon"></i> 出現頻率以時間呈現</h6>
+            </div>
+            <div class="card-body">
+                <br>
+                <br>
+                <small>觀察每個時間點的有多少篇報導(聲量大小)</small>
+                <div class="row">
+                    
+                    <canvas id="keyword_time_line_chart"></canvas>
+                    
+                </div>
+                <br><br>
+            </div>
         </div>
-        <div class="block-content">
+    </div><!-- 區塊結束-->
 
-            <div class="show-chart"><canvas id="keyword_time_line_chart"></canvas></div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<div class="row block-content">
+    <!-- 同時出現的關鍵字區塊-->
     <div class="col-lg-6 mb-2">
         <div class="card">
             <div class="card-header">
@@ -110,10 +111,10 @@
 
             </div>
         </div>
-    </div>
+    </div><!-- 區塊結束-->
+
 
 </div>
-
 {% endblock %}
 
 

@@ -1,77 +1,79 @@
 {% extends 'default.html' %}
 
-{% block content %}
-<div class="row">
-    <!-- Here insert the navigation bar -->
+{% load static %}
 
+{% block cover-image %}
+<img width='100%' src="{% static 'images/Cover__app__top_person.png' %}">
+<div class="row block-content">
+  <div class="col-lg-12 mb-5">
+    <div class="card">
+      <div class="card-header">
+        <h6 class="text-uppercase mb-0">
+          <i class="fas fa-sliders-h red"></i> 篩選條件
+        </h6>
+      </div>
 
-    <div class="col-lg-12">
-        <h1>熱門人物</h1>
-    </div>
-
-    <!-- column col-lg-6 card -->
-    <div class="col-lg-6 mb-5">
-        <div class="card">
-            <div class="card-header">
-                <h6 class="text-uppercase mb-0">
-                    <i class="fas fa-sliders-h red"></i> 篩選條件
-                </h6>
-            </div>
-
-            <div class="card-body">
-                <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">新聞類別</label>
-                    <div class="col-md-9">
-                        <label class="radio-inline"><input type="radio" value="全部" name="cateradio" checked />全部</label>
-                        <label class="radio-inline"><input type="radio" value="tw_stock_news" name="cateradio" />台股新聞</label>
-                        <label class="radio-inline"><input type="radio" value="tw_macro" name="cateradio" />台灣政經</label>
-                        <label class="radio-inline"><input type="radio" value="tw_quo" name="cateradio" />台股盤勢</label>
-                        <label class="radio-inline"><input type="radio" value="wd_macro" name="cateradio" />國際政經</label>
-                        <label class="radio-inline"><input type="radio" value="us_stock" name="cateradio" />美股</label>
-                        <label class="radio-inline"><input type="radio" value="eu_asia_stock" name="cateradio" />歐亞股</label>
-                        <label class="radio-inline"><input type="radio" value="cn_macro" name="cateradio" />中國政經</label>
-                        <label class="radio-inline"><input type="radio" value="hk_stock" name="cateradio" />港股</label>
-                        <label class="radio-inline"><input type="radio" value="sh_stock" name="cateradio" />A股</label>
-                    </div>
-                </div>
-                <!--form group-->
-
-                <!-- Number of persons form group -->
-                <div class="form-group row">
-                    <label class="col-md-3 form-control-label">排序</label>
-                    <div class="col-md-9">
-                        <label class="radio-inline"><input type="radio" value="5" name="topkradio" />5</label>
-                        <label class="radio-inline"><input type="radio" value="10" name="topkradio" checked />10</label>
-                        <label class="radio-inline"><input type="radio" value="20" name="topkradio" />20</label>
-                        <label class="radio-inline"><input type="radio" value="30" name="topkradio" />30</label>
-                        <label class="radio-inline"><input type="radio" value="40" name="topkradio" />40</label>
-                        <label class="radio-inline"><input type="radio" value="50" name="topkradio" />50</label>
-                        <label class="radio-inline"><input type="radio" value="60" name="topkradio" />60</label>
-                        
-                    </div>
-                </div>
-                <!--form group-->
-            </div>
-            <!--card body-->
+      <div class="card-body">
+        <div class="form-group row">
+          <label class="col-sm-3 form-control-label"><i class="far fa-newspaper red"></i> 新聞類別</label>
+          <div class="col-md-9">
+            <label class="radio-inline"><input type="radio" value="全部" name="cateradio" checked />全部 </label>
+            <label class="radio-inline"><input type="radio" value="tw_stock_news" name="cateradio" />台股新聞 </label>
+            <label class="radio-inline"><input type="radio" value="tw_macro" name="cateradio" />台灣政經 </label>
+            <label class="radio-inline"><input type="radio" value="tw_quo" name="cateradio" />台股盤勢 </label>
+            <label class="radio-inline"><input type="radio" value="wd_macro" name="cateradio" />國際政經 </label>
+            <label class="radio-inline"><input type="radio" value="us_stock" name="cateradio" />美股 </label>
+            <label class="radio-inline"><input type="radio" value="eu_asia_stock" name="cateradio" />歐亞股 </label>
+            <label class="radio-inline"><input type="radio" value="cn_macro" name="cateradio" />中國政經 </label>
+            <label class="radio-inline"><input type="radio" value="hk_stock" name="cateradio" />港股 </label>
+            <label class="radio-inline"><input type="radio" value="sh_stock" name="cateradio" />A股 </label>
+          </div>
         </div>
-        <!--card -->
-    </div>
-    <!-- column -->
+        <!--form group-->
 
-    <!-- 繪圖區塊-->
-    <div class="col-lg-6 mb-5">
-        <div class="card">
-            <div class="card-header">
-                <h6 class="text-uppercase mb-0"><i class="fa-solid fa-chart-line icon"></i> 熱門關鍵字繪圖</h6>
-            </div>
-            <div class="card-body">
-                <canvas id="mychart"></canvas>
-            </div>
+        <!-- Number of persons form group -->
+        <div class="form-group row">
+          <label class="col-md-3 form-control-label"><i class="fas fa-signal red"></i> 排序</label>
+          <div class="col-md-9">
+            <label class="radio-inline"><input type="radio" value="5" name="topkradio" />5</label>
+            <label class="radio-inline"><input type="radio" value="10" name="topkradio" checked />10</label>
+            <label class="radio-inline"><input type="radio" value="20" name="topkradio" />20</label>
+            <label class="radio-inline"><input type="radio" value="30" name="topkradio" />30</label>
+            <label class="radio-inline"><input type="radio" value="40" name="topkradio" />40</label>
+            <label class="radio-inline"><input type="radio" value="50" name="topkradio" />50</label>
+            <label class="radio-inline"><input type="radio" value="60" name="topkradio" />60</label>
+
+          </div>
         </div>
+        <!--form group-->
+      </div>
+      <!--card body-->
     </div>
-    <!-- column -->
+    <!--card -->
+  </div>
+
+
 </div>
+<div class="bg-red">
+
+  <div class="col">
+    <div class="card-header">
+      <br>
+      <h6 class="text-uppercase mb-0"><i class="fa-solid fa-chart-line icon"></i> 熱門關鍵字繪圖</h6>
+    </div>
+    <div class="block-content">
+
+      <div class="show-chart"><canvas id="mychart" class="bg-red"></canvas></div>
+      
+    </div>
+
+  </div>
+
+</div>
+
+
 {% endblock %}
+
 
 
 {% block js %}
@@ -105,7 +107,7 @@
       type: "POST",
       url: "/api/top_person",
 
-    //   url: "http://163.18.23.21:8000/topperson/api_get_topPerson/",
+      //   url: "http://163.18.23.21:8000/topperson/api_get_topPerson/",
 
       data: { news_category: cate, topk: topk },
       success: function (received) {
@@ -132,6 +134,7 @@
     //第1個變數: 餵給chart的資料
     let data = {
       labels: labels,
+
       datasets: [
         {
           label: category,
@@ -177,6 +180,7 @@
       type: "bar",
       data: data,
       options: options,
+      backgroundColor: 'rgba(0,0,0,0)',
     });
 
     //** 產生隨機顏色
@@ -194,6 +198,8 @@
       return colors;
     }
   } //show chart function
+
+
+
 </script>
 {% endblock %}
-
