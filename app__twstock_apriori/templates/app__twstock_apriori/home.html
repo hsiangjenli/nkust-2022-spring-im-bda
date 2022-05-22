@@ -1,0 +1,58 @@
+{% extends 'default.html' %}
+
+{% load static %}
+
+{% block cover-image %}
+<img width='100%' src="{% static 'images/Cover__app__twstock_apriori.png' %}">
+
+<div class="row block-content center">
+    <div class="col-lg-12 mb-5">
+        
+        <h1 class="red">Apriori Algorithm <text style="font-size: 1rem">台股關聯性分析</text></h1>
+        <div class="center-justify">以台股</div>
+    </div>    
+</div>
+
+<div class="bg-grey center">
+    <div class="row block-content-max">
+        <div class="col-lg-6 mb-5">
+            <div class="card-header">
+                <h6 class="text-uppercase mb-0"><i class="fas fa-arrow-up red"></i> 上漲關聯字</h6>
+            </div>
+            <iframe width='100%' height='700px' scrolling="no" style="border:none;"
+                src="http://127.0.0.1:8000/iframe/rise"></iframe>
+        </div>
+
+
+        <div class="col-lg-6 mb-5">
+            <div class="card-header">
+                <h6 class="text-uppercase mb-0"><i class="fas fa-arrow-down white"></i> 下跌關聯字</h6>
+            </div>
+            <iframe width='100%' height='700px' scrolling="no" style="border:none;"
+                src="http://127.0.0.1:8000/iframe/fall"></iframe>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<div class="row block-content center">
+    <h1 class="red">Apriori <text style="font-size: 1rem">先驗演算法</text></h1>
+    <div class="col-lg-12 mb-5">
+        
+        <p class="center-justify">在電腦科學以及資料探勘領域中， 先驗演算法（Apriori Algorithm）[1]是關聯規則學習的經典演算法之一。先驗演算法的設計目的是為了處理包含交易資訊內容的資料庫（例如,顧客購買的商品清單，或者網頁常訪清單。）而其他的演算法則是設計用來尋找無交易資訊（如Winepi演算法和Minepi演算法）或無時間標記（如DNA定序）的資料之間的聯絡規則。在關聯式規則中,一般對於給定的專案集合（例如，零售交易集合，每個集合都列出的單個商品的購買資訊），演算法通常嘗試在專案集合中找出至少有C個相同的子集。先驗演算法採用由下而上的處理方法，即頻繁子集每次只擴充一個物件（該步驟被稱為候選集產生），並且候選集由資料進行檢驗。當不再產生符合條件的擴充物件時，演算法終止。先驗演算法採用廣度優先搜尋演算法進行搜尋並採用樹結構來對候選專案集進行高效計數。它通過長度為{\displaystyle k-1}k-1的候選專案集來產生長度為{\displaystyle k}k的候選專案集，然後從中刪除包含不常見子模式的候選項。根據向下封閉性引理,該候選專案集包含所有長度為{\displaystyle k}k的頻繁專案集。之後，就可以通過掃描交易資料庫來決定候選專案集中的頻繁專案集。雖然先驗演算法具有顯著的歷史地位，但是其中的一些低效與權衡弊端也進而引致了許多其他的演算法的產生。候選集產生過程生成了大量的子集（先驗演算法在每次對資料庫進行掃描之前總是嘗試載入儘可能多的候選集）。並且自底而上的子集瀏覽過程（本質上為寬度優先的子集格遍歷）也直到遍歷完所有 個可能的子集之後才尋找任意最大子集S。</p>
+    </div>
+
+    <div class="col-lg-12 mb-5">34
+
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% block js %}
+
+{% endblock %}
