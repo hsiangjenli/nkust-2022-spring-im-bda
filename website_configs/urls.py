@@ -25,4 +25,5 @@ urlpatterns = [
     path('', include('app__top_person.urls')),
     path('', include('app__api.urls')),
     path('', include('app__user_key_sentiment.urls')),
+    path('', include('app__twstock_apriori.urls')),
 ]

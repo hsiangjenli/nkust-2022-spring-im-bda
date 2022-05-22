@@ -1,0 +1,44 @@
+:root {
+    --main-color-grey: #D3D3D3;
+    --main-color-skin: #F0EAE8;
+    --main-color-yellow: #C0AA7A;
+    --main-color-black: #262626;
+    --main-color-white: #fff;
+    --main-color-light-yellow: #F9F7F3;
+}
+
+
+/* Background-Color */
+.bg-none {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+}
+.bg-white {
+    background-color: var(--main-color-white);
+}
+.bg-red {
+    background-color: var(--main-color-light-yellow)
+}
+
+.bg-black {
+    background-color: var(--main-color-black);
+}
+
+.bg-grey {
+    background-color: var(--main-color-grey);
+}
+
+/* Text-Color */
+.red {
+    color: var(--main-color-yellow);
+}
+
+.green {
+    color: var(--main-color-grey);
+}
+
+.white {
+    color: var(--main-color-white);
+}
+

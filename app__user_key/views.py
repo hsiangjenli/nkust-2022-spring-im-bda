@@ -6,13 +6,16 @@ import pandas as pd
 from .processing import *
 from datetime import datetime
 
+import app__api.views as api
+global df
+df = api.df
 
 def StringToDatetime(x):
     '''Data from MongoDB'''
     return datetime.strptime(x, '%Y-%m-%d %H:%M:%S')
 
-df = pd.read_csv('app__api/dataset/fromMonogoDB.csv')#LoadData()
-df['Date'] = df['Date'].apply(StringToDatetime)
+# df = pd.read_csv('app__api/dataset/fromMonogoDB.csv')#LoadData()
+# df['Date'] = df['Date'].apply(StringToDatetime)
 
 
 def home(request):

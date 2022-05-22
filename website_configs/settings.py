@@ -38,12 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',  # 跨域資源共享
-    'app__home_page', # Add new app.
+    'app__api',
+    'app__home_page',
     'app__overview',
     'app__user_key',
     'app__user_key_sentiment',
     'app__top_person',
-    'app__api',
+    'app__twstock_apriori',
 ]
 
 MIDDLEWARE = [

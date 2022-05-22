@@ -1,9 +1,18 @@
 .show-chart {
     position: relative;
     margin: auto;
-    width: calc(50% + 220px);
+    width: calc(50% + 190px);
   }
 
 .show-emoji {
     width: calc(13% + 120px);
+}
+
+#mynetwork {
+  width: 100%;
+  height: 500px;
+  background-color: #F9F7F3;
+  border: 0px solid lightgray !important;
+  position: relative;
+  float: left;
 }

@@ -62,9 +62,9 @@ def get_daily_basis_sentiment_count(df_query, sentiment_type='pos', freq_type='D
     if sentiment_type == 'pos':
         lambda_function = lambda senti: 1 if senti >= 0.6 else 0 #大於0.6為正向 
     elif sentiment_type == 'neg':
-        lambda_function = lambda senti: 1 if senti <= 0.4 else 0 #小於0.4為負向
+        lambda_function = lambda senti: 1 if senti <= 0.3 else 0 #小於0.4為負向
     elif sentiment_type == 'neutral':
-        lambda_function = lambda senti: 1 if senti > 0.4 & senti < 0.4 else 0 #介於中間為中立
+        lambda_function = lambda senti: 1 if senti > 0.3 & senti < 0.3 else 0 #介於中間為中立
     else:
         return None 
         

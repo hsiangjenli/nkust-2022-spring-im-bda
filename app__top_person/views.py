@@ -3,7 +3,9 @@ import pandas as pd
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from collections import Counter
-
+import app__api.views as api
+global df
+df = api.df
 
 def home(request):
 
@@ -17,7 +19,7 @@ def NerToken(word, ner, idx):
 @csrf_exempt
 def api_post_top_person(request):
 
-    df = pd.read_csv('app__api/dataset/fromMonogoDB.csv')
+    # df = pd.read_csv('app__api/dataset/fromMonogoDB.csv')
 
     cat = request.POST.get('news_category')
     topk = request.POST.get('topk')
@@ -28,10 +30,10 @@ def api_post_top_person(request):
     df_cat = df[df.Category == cat] if cat != '全部' else df
 
     for ne in df_cat.entities:
-        if str(ne) == 'nan':
+        if str(ne) == 'nan' or str(ne) == '':
             pass
         else:
-            allNE += eval(ne)
+            allNE += eval(str(ne))
 
     filtered_words = []
     for ner, word in allNE:

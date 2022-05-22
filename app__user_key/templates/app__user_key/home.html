@@ -5,12 +5,14 @@
 {% block cover-image %}
 <img width='100%' src="{% static 'images/Cover__app__user_key.png' %}">
 <div class="row block-content">
+    
     <div class="col-lg-12 mb-2">
+        <h1 class="red center mb-5">Personal Key Words <text style="font-size: 1rem">關鍵字分析</text></h1>
         <!-- 輸入條件區塊開始 -->
         <div class="card">
-            <div class="card-header">
-                <h6 class="text-uppercase mb-0"><i class="fa-solid fa-circle-check icon"></i> 輸入條件</h6>
-            </div>
+            
+            <h5 class="mb-4 center"><i class="fa-solid fa-circle-check icon"></i> 輸入條件</h5>
+            
             <div class="card-body">
                 <div class="form-group row">
                     <label class="col-md-3 form-control-label">關鍵詞</label>
@@ -193,6 +195,10 @@
     } //call_ajax()
 
     let ctx_key_time = document.getElementById("keyword_time_line_chart").getContext('2d');
+    var gradient = ctx_key_time.createLinearGradient(0, 0, 0, 350);
+        gradient.addColorStop(0, 'rgba(192, 170, 122, 0.4)');
+        gradient.addColorStop(0.3, 'rgba(250,174,50,0.1)');
+        gradient.addColorStop(1, 'rgba(250,174,50,0)');
 
     //let chart = null; //chart全域變數 
 
@@ -205,9 +211,15 @@
                         label: 's2',
                         borderColor: '#C0AA7A',
                         data: data_key_time_freq,
+                        backgroundColor: gradient,
                     }]
             },
             options: {
+                elements: {
+                    point: {
+                        radius: 0,
+                    }
+                },
                 legend: {
                     display: false,
                 },

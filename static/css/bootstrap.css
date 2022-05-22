@@ -1,46 +1,53 @@
+@import 'color.css';
 
-:root {
-    --main-bg-color-red: #F9F7F3;
-    --main-bg-color-white: #fff;
-    --main-bg-color-black: #262626;
-}
-.bg-white {
-    background-color: var(--main-bg-color-white);
-}
-.bg-red {
-    background-color: var(--main-bg-color-red)
+
+/* 左右置中 */
+.right {
+    text-align: right;
 }
 
-.bg-black {
-    background-color: var(--main-bg-color-black);
+.left {
+    text-align: left;
 }
 
-.bg-none {
-    background-color: transparent;;
+.center {
+    text-align: center;
 }
+
+.center-justify {
+    text-align: justify;
+}
+
+
 .card-header {
-    border-bottom: 0px solid rgba(0,0,0,.125);
+    border-bottom: 0px solid rgba(0, 0, 0, .125);
 }
+
 .card-body {
     padding: 0rem;
 }
 
 .card {
-    border: 0px solid rgba(0,0,0,.125);
+    border: 0px solid rgba(0, 0, 0, .125);
 }
-
-
-
 
 .form-group {
-    margin-bottom:0rem;
+    margin-bottom: 0rem;
 }
+
 .radio-inline {
     padding: .35rem;
 }
 
-
 .vcenter-item {
-    margin: auto;    
+    margin: auto;
     display: block;
+}
+
+/*  */
+
+@media print {
+    .page-br {
+        page-break-before: always;
+    }
 }

@@ -63,8 +63,7 @@ def count_keyword(query_df, user_keywords):
         # tokens = eval(row.tokens_v2)
         # tokens = [e[0] for e in tokens]
         '''
-        tokens = eval(row.tokens_v2)
-        tokens = [e[0] for e in tokens]
+        tokens = np.squeeze(row.tokens_v2).tolist()
         freq =  len([word for word in tokens if (word in user_keywords)])
         
         

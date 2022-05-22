@@ -10,6 +10,8 @@ import numpy as np
 global df
 df = api.df
 
+POS = 0.009
+NEG = 0.001
 
 def filter_df_via_content(query_keywords, cond, cate, weeks):
 
@@ -56,9 +58,9 @@ def get_article_sentiment(df_query):
 
     for senti in df_query.sentiment:
         # 判斷文章的情緒極性
-        if senti >= 0.6:
+        if senti > POS:
             sentiCount['pos'] += 1
-        elif senti <= 0.4:
+        elif senti < NEG:
             sentiCount['neg'] += 1
         else:
             sentiCount['neutral'] += 1
@@ -75,13 +77,13 @@ def get_daily_basis_sentiment_count(df_query, sentiment_type='pos', freq_type='D
     # 自訂正負向中立的標準，sentiment score是機率值，介於0~1之間
     # Using lambda to determine if an article is postive or not.
     if sentiment_type == 'pos':
-        lambda_function = lambda senti: 1 if senti >= 0.6 else 0 #大於0.6為正向 
+        lambda_function = lambda senti: 1 if senti > POS else 0 #大於0.6為正向 
     elif sentiment_type == 'neg':
-        lambda_function = lambda senti: 1 if senti <= 0.4 else 0 #小於0.4為負向
-    elif sentiment_type == 'neutral':
-        lambda_function = lambda senti: 1 if senti > 0.4 & senti < 0.4 else 0 #介於中間為中立
+        lambda_function = lambda senti: 1 if senti < NEG else 0 #小於0.4為負向
     else:
-        return None 
+        lambda_function = lambda senti: 1 if senti > NEG & senti < POS else 0 #介於中間為中立
+    # else:
+    #     return None 
         
     freq_df = pd.DataFrame({'date_index': pd.to_datetime(df_query.Date),
                              'frequency': [lambda_function(senti) for senti in df_query.sentiment]})
@@ -135,7 +137,7 @@ def api_get_userkey_sentiment(request):
     query_keywords = userkey.split()
     
     response = prepare_for_response(query_keywords, cond, cate, weeks)
-    print(response)
+    
     return JsonResponse(response)
 
 

@@ -92,6 +92,8 @@ d3.csv('http://127.0.0.1:8000/api/twii_history', function (err, rows) {
     var layout = {
         plot_bgcolor: '#F9F7F3',
         paper_bgcolor: '#F9F7F3',
+        // plot_bgcolor: '#fff',
+        // paper_bgcolor: '#fff',
         dragmode: 'zoom',
         showlegend: false,
         xaxis: {
