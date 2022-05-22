@@ -14,16 +14,25 @@ df = LoadPyMongo()
 @csrf_exempt
 def api_twii_5mins(request):
 
-    twii5mins = pd.read_csv('app__api/dataset/twii_5_mins.csv')
+    twii5mins = pd.read_csv('app__api/dataset/5twii.csv')
     
+    color = '#C0AA7A' if twii5mins['TAIEX'].iloc[-1] > twii5mins['TAIEX'][0] else '#D3D3D3'
+    fillcolor = 'rgba(192, 170, 122, 0.2)' if twii5mins['TAIEX'].iloc[-1] > twii5mins['TAIEX'][0] else 'rgba(211, 211, 211, 0.2)'
 
-    color = '#C0AA7A' if twii5mins['TAIEX'].iloc[-1] > twii5mins['TAIEX'][0] else '#D9D9D9'
     outputsRiseFall = CountRiseFall(df=df, cats=catTaiwan)
+    time = twii5mins['Time'].to_list()
+
+    json = []
+    for t, twii in zip(twii5mins['Time'], twii5mins['TAIEX']):
+        row = {'x': str(t), 'y': twii}
+        json.append(row)
+
     twii5minsJson = {
-        'Time': twii5mins['Time'].to_list(),
+        'Time': time,
         'Index': twii5mins['TAIEX'].to_list(),
-        'Zero': list(np.zeros(len(twii5mins['Time']))),
-        'Color': color
+        'Color': color,
+        'FColor': fillcolor,
+        'Json': json,
     }
     twii5minsJson.update(outputsRiseFall)
     return JsonResponse(twii5minsJson, safe=False)
