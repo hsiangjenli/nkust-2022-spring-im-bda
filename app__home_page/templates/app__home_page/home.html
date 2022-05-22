@@ -1,14 +1,123 @@
 {% extends 'default.html' %}
 
-{% block content %}
-<div class="text-center block-content">
-    <img class="logo" src="http://hsiangjenli.gitlab.io/static/images/Logo.png" class="rounded">
+{% load static %}
+
+{% block cover-image %}
+<!-- 封面 -->
+<img width='100%' src="{% static 'images/Cover__app__home_page.png' %}">
+<h1 class="red center mt-5 mb-5">Documentation <text style="font-size: 1rem">網頁介紹</text></h1>
+
+
+<div class="block-content"> <!-- 1.0_台灣股市 -->
     <br><br>
-    <div class="font-bold">
-        🎓 國立高雄科技大學 金融系 李享紝 C107125248
+    <h2 class="hr mb-5"><i class="fas fa-rocket red"></i> 台灣股市</h2>
+
+    
+    <!-- 1.1_總覽 -->
+    <h4 class="mb-5">Overview 總覽</h4>
+
+
+    <div class="row mb-5"> <!-- 1.11_上漲/下跌聲量 -->
+        <div class="col-lg-5">
+            <ol>
+                <li>上漲/下跌聲量</li>
+            </ol>
+        </div>
+        <div class="col-lg-7 center"><img class='w-50' src="https://i.imgur.com/fclYezC.png"></div>
     </div>
 
 
+    <div class="row mb-5"> <!-- 1.12_指數走勢 -->
+        <div class="col-lg-5">
+            <ol start="2">
+
+                <li>當日台灣加權股價指數走勢（每10分鐘）</li>
+            </ol>
+        </div>
+        <div class="col-lg-7 center"><img class='w-75' src="https://i.imgur.com/QddMbYX.png"></div>
+    </div>
+
+
+    <div class="row mb-5"> <!-- 1.13_歷史股價 -->
+        <div class="col-lg-5">
+            <ol start="3">
+                <li>歷史股價</li> ![Image](https://i.imgur.com/eEISib3.png)
+            </ol>
+        </div>
+        <div class="col-lg-7 center"><img class='w-75 vcenter-item' src="https://i.imgur.com/y2JKoFY.png"></div>
+    </div>
+
+    <!-- 1.2_Apriori Algorithm 台股關聯性分析 -->
+    <h4 class="mb-5">Apriori Algorithm 台股關聯性分析</h4>
+
+
+    <div class="row mb-5"> <!-- 1.21_上漲/下跌關聯字 -->
+        <div class="col-lg-5">
+            <ol>
+                <li>上漲/下跌關聯字</li>
+            </ol>
+            <ul>
+                <li>繪圖套件 <span class="badge">pyvis</span></li>
+                <li>Apriori演算法套件 <span class="badge">apyori</span></li>
+            </ul>
+        </div>
+        <div class="col-lg-7 vcenter-item center"><img class='w-75' src="https://i.imgur.com/aRfNWTO.png"></div>
+    </div>
+
 </div>
 
+
+<div class="bg-red"> <!-- 2.0_熱門人物 -->
+    <div class="block-content"><br><br>
+        <h2 class="hr mb-5"><i class="fas fa-street-view red"></i> 熱門人物</h2>
+
+        <div class="row">
+            <div class="col-lg-5 vcenter-item"></div>
+            <div class="col-lg-7 vcenter-item center"><img class='w-75' src="https://i.imgur.com/NDIhRtq.png"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="block-content"> <!-- 3.0_個人化關鍵字 -->
+    <br><br>
+    <h2 class="hr"><i class="fas fa-key red"></i> 個人化關鍵字</h2>
+
+    <div class="row">
+        <div class="col-lg-5 vcenter-item"></div>
+        <div class="col-lg-7 vcenter-item center"><img class='w-75' src="https://i.imgur.com/KUTDfvN.png"></div>
+    </div>
+</div>
+
+
+<div class="bg-red"> <!-- 4.0_情感性分析 -->
+    <div class="block-content">
+        <br><br>
+        <h2 class="hr mb-5"><i class="fas fa-dizzy red"></i> 情感性分析</h2>
+
+        
+        <div class="row mb-5"> <!-- 4.1 -->
+            <div class="col-lg-5 vcenter-item"></div>
+            <div class="col-lg-7 vcenter-item center"><img class='w-75' src="https://i.imgur.com/vt9OjUS.png"></div>
+        </div>
+
+        
+        <div class="row mb-5"> <!-- 4.2 -->
+            <div class="col-lg-5 vcenter-item"></div>
+            <div class="col-lg-7 vcenter-item center"><img class='w-50' src="https://i.imgur.com/GweqesB.png"></div>
+        </div>
+
+        
+        <div class="row"> <!-- 4.3 -->
+            <div class="col-lg-5 vcenter-item"></div>
+            <div class="col-lg-7 vcenter-item center"><img class='w-75' src="https://i.imgur.com/T21G7y4.png"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="font-bold">
+    🎓 國立高雄科技大學 金融系 李享紝 C107125248
+</div>
+![Image](https://i.imgur.com/vt9OjUS.png)
 {% endblock %}
