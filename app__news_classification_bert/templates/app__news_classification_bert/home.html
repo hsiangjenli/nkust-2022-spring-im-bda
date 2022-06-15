@@ -1,0 +1,94 @@
+{% extends 'default.html' %}
+
+{% load static %}
+
+{% block cover-image %}
+<img width='100%' src="{% static 'images/Cover__app__news_classification_bert.png' %}">
+
+
+<div class="block-content b">
+    <h1 class="red center mb-5">Google BERT Classification <text style="font-size: 1rem">新聞類別判斷系統</text></h1>
+    <div class="col-lg-12">
+        <p>BERT模型是Google開發的語言模型(Language Model)，該模型是從海量語料庫文字(維基百科等)訓練得到的字向量(word
+            vectors)表達，蘊含有文字語意，在NLP文字理解任務中得到史無前例的進展，此處將其應用於新聞類別分類任務。</p>
+    </div>
+</div>
+
+<div class="block-content bg-red">
+    <h2 class="b red center mb-5"><i class="far fa-object-group red"></i> BERT Classification</h2>
+    <div class="row">
+        
+        <div class="col-lg-8">
+
+            <div class="form-group mb-2">
+                <textarea class="form-control" id="textarea_content"
+                    name="textarea_text" rows="6">中央社報導...</textarea>
+            </div>
+            
+
+        </div>
+        
+
+        <div class="col-lg-4 vcenter-item">
+            <!-- <h4 class="b red center">判讀結果</h4> -->
+
+            <div class='center' id="show_category_proba"></div>
+
+
+        </div>
+
+    </div>
+    <div class='center mt-3 row'>
+        <div class="col-lg-8"><button type="button" class="btn bg-red right" id="btn_deep">BERT深度模型</button></div>
+        
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+
+{% block js %}
+<script>
+
+    // default text 
+    $('#textarea_content').val("疫情時期企業併購案不減反增，會計師提醒，企業評估併購，除須衡量併購條件外，也要考慮稅負成本，尤其當股東身份不同時，稅負效果也有所差異。");
+
+    const target_div = document.getElementById("show_category_proba");
+
+    //-- btn_deep on click event
+    $('#btn_deep').on('click', function (e) {
+        call_ajax();
+    });
+
+
+    function call_ajax() {
+        const input_text = $('#textarea_content').val();
+        console.log(input_text);
+        target_div.innerHTML = '';
+        $.ajax({
+            type: "POST",
+            url: "api/news_classification_bert",
+            data: {
+                "input_text": input_text,
+            },
+            success: function (received) {
+                const item = received;
+                console.log(item);
+                const label = received['label'];
+                const proba = received['proba'];
+                
+                target_div.innerHTML += `<text class='red b center' style='font-size: 3.5rem;'>${proba}<text class='red b' style='font-size: 1rem;'> %</text></text>` + "<br>";
+                target_div.innerHTML += `<text class='b center blue' style='font-size: 1rem;'>${label}</text>`
+
+
+            } 
+        });
+
+    } 
+
+</script>
+
+
+{% endblock %}
