@@ -9,7 +9,7 @@ from .helper import LoadPyMongo
 keyRiseFall = ['上漲', '下跌']
 catTaiwan = ['tw_stock_news', 'tw_macro', 'tw_quo']
 global df
-df = LoadPyMongo()
+df = LoadPyMongo().sort_values(by='Date')
 
 @csrf_exempt
 def api_twii_5mins(request):
