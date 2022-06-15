@@ -1,0 +1,206 @@
+{% extends 'default.html' %}
+
+{% load static %}
+
+{% block cover-image %}
+<img width='100%' src="{% static 'images/Cover__app__cb_fsc.png' %}">
+<div class="block-content">
+    <h1 class="red center mb-5">Taiwan - CB & FSC <text style="font-size: 1rem">台灣央行&金管會</text></h1>
+
+    <div class="row">
+        <div class="col-lg-3 center">
+            <img width='100%' src="{% static 'images/Img__楊金龍.png' %}">
+            <h5 class="red m-2">Yang Chin-long <br><small>楊金龍</small></h5>
+        </div>
+        <div class="col-lg-9 vcenter-item" >
+            <canvas id="Chart__TimeLine_Yang" height="35"></canvas>
+        </div>
+     
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-3 center">
+            <img width='100%' src="{% static 'images/Img__黃天牧.png' %}">
+            <h5 class="red m-2">Huang Tien-mu <br><small>黃天牧</small></h5>
+        </div>
+        <div class="col-lg-9 vcenter-item">
+            <canvas id="Chart__TimeLine_Huang" height="35"></canvas>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 center">
+            <img width='100%' src="{% static 'images/Img__鮑爾.png' %}">
+            <h5 class="red m-2">Jerome Powell <br><small>傑洛姆·鮑爾</small></h5>
+        </div>
+        <div class="col-lg-9 vcenter-item">
+            <canvas id="Chart__TimeLine_Powell" height="35"></canvas>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+<script>
+
+    var colors = ["#C0AA7A", "#404040", "#D9D9D9"]
+    var Name = ['Yang', 'Huang', 'Powell']
+
+    let chart_H = document.getElementById(`Chart__TimeLine_Huang`).getContext('2d');
+    var neg_H = chart_H.createLinearGradient(0, 0, 0, 250);
+    neg_H.addColorStop(0, 'rgba(97, 97, 97, 0.4)');
+    neg_H.addColorStop(0.1, 'rgba(97, 97, 97,0.2)');
+    neg_H.addColorStop(1, 'rgba(97, 97, 97,0)');
+
+    var pos_H = chart_H.createLinearGradient(0, 0, 0, 250);
+    pos_H.addColorStop(0, 'rgba(192, 170, 122, 0.4)');
+    pos_H.addColorStop(0.3, 'rgba(192, 170, 122,0.2)');
+    pos_H.addColorStop(1, 'rgba(192, 170, 122,0)');
+
+
+    let chart_Y = document.getElementById(`Chart__TimeLine_Yang`).getContext('2d');
+    var neg_Y = chart_Y.createLinearGradient(0, 0, 0, 250);
+    neg_Y.addColorStop(0, 'rgba(97, 97, 97, 0.4)');
+    neg_Y.addColorStop(0.1, 'rgba(97, 97, 97,0.2)');
+    neg_Y.addColorStop(1, 'rgba(97, 97, 97,0)');
+
+    var pos_Y = chart_Y.createLinearGradient(0, 0, 0, 250);
+    pos_Y.addColorStop(0, 'rgba(192, 170, 122, 0.4)');
+    pos_Y.addColorStop(0.3, 'rgba(192, 170, 122,0.2)');
+    pos_Y.addColorStop(1, 'rgba(192, 170, 122,0)');
+
+
+    let chart_P = document.getElementById(`Chart__TimeLine_Powell`).getContext('2d');
+    var neg_P = chart_P.createLinearGradient(0, 0, 0, 250);
+    neg_P.addColorStop(0, 'rgba(97, 97, 97, 0.4)');
+    neg_P.addColorStop(0.1, 'rgba(97, 97, 97,0.2)');
+    neg_P.addColorStop(1, 'rgba(97, 97, 97,0)');
+
+    var pos_P = chart_P.createLinearGradient(0, 0, 0, 250);
+    pos_P.addColorStop(0, 'rgba(192, 170, 122, 0.4)');
+    pos_P.addColorStop(0.3, 'rgba(192, 170, 122,0.2)');
+    pos_P.addColorStop(1, 'rgba(192, 170, 122,0)');
+
+    call_ajax('黃天牧 金管會', 4, '全部', 'or', chart_H, pos_H, neg_H);
+    call_ajax('楊金龍 央行 中央銀行', 4, '全部', 'or', chart_Y, pos_Y, neg_Y);
+    call_ajax('Fed fed 傑洛姆 鮑爾 Jerome Powell 聯準會', 4, '全部', 'or', chart_P, pos_P, neg_P);
+
+
+    function call_ajax(uk, w, cat, con, linechartElem, gradient_pos, gradient_neg) {
+
+        const userkey = uk;
+        const weeks = w;
+        const cate = cat;
+        const cond = con;
+
+        if (userkey.length < 2) {
+            alert("輸入關鍵字不可空白或小於兩個中文字!");
+            return 0;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "api/get_userkey_sentiment",
+            data: {
+                userkey: userkey,
+                cate: cate,
+                weeks: weeks,
+                cond: cond,
+            },
+            success: function (received) {
+
+                const data_pos = received["data_pos"];
+                const data_neg = received["data_neg"];
+                
+                // if (window.linechart) linechart.destroy();
+
+                linechart = drawLineChart(linechartElem, data_pos, data_neg);
+            },
+        });
+    }
+    function drawLineChart(linechartElem, data_pos, data_neg, gradient_pos, gradient_neg) {
+        console.log(linechartElem);
+        let dataPos = {
+            label: "正面",
+            data: data_pos,
+            borderColor: "rgba(192, 170, 122, 1)",
+            backgroundColor: gradient_pos,
+            borderWidth: 3,
+            fill: true,
+
+        };
+
+        let dataNeg = {
+            label: "負面",
+            data: data_neg,
+            borderColor: "rgba(97, 97, 97, 0.7)",
+            backgroundColor: gradient_neg,
+            borderWidth: 3,
+            fill: true,
+        };
+
+        let options_detail = {
+            responsive: true,
+
+            elements: {
+                point: {
+                    radius: 0,
+                }
+            },
+            legend: {
+                display: false,
+            },
+            scales: {
+                y: {
+                    grid: {
+                        display: false
+                    }
+                },
+                xAxes: [{
+                    type: "time",
+                    time: {
+                        unit: "day", displayFormats: { day: "MM/DD", },
+                    },
+                    gridLines: {
+                        display: false,
+                    }
+                },],
+                yAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                        display: true,
+                        scaleLabel: {
+                            display: false,
+                            labelString: "篇數",
+                        },
+                        gridLines: {
+                            display: false,
+                            zeroLineColor: '#fff'
+                        }
+                    },
+                ],
+            },
+        };
+
+        let chart_spec = {
+            type: "line",
+            data: {
+                datasets: [dataPos, dataNeg], //有兩條線，兩組資料使用陣列存放即可
+            },
+            options: options_detail,
+        };
+
+        return new Chart(linechartElem, chart_spec);
+    }
+
+</script>
+{% endblock %}
