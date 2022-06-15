@@ -1,10 +1,12 @@
 :root {
     --main-color-grey: #D3D3D3;
-    --main-color-skin: #F0EAE8;
+    --main-color-skin: #F8F9FA;
     --main-color-yellow: #C0AA7A;
     --main-color-black: #262626;
     --main-color-white: #fff;
+    --main-color-blue: #2F2E41;
     --main-color-light-yellow: #F9F7F3;
+    --text-shadow: rgba(255, 255, 255, 0.1);
 }
 
 
@@ -28,6 +30,9 @@
 .bg-grey {
     background-color: var(--main-color-grey);
 }
+.bg-skin {
+    background-color: var(--main-color-skin);
+}
 
 /* Text-Color */
 .red {
@@ -37,8 +42,25 @@
 .green {
     color: var(--main-color-grey);
 }
+.black {
+    color: var(--main-color-black);
+}
+.blue {
+    color: var(--main-color-blue);
+}
 
 .white {
     color: var(--main-color-white);
 }
+.grey {
+    color: var(--main-color-grey);
+}
+/* .blur {
+    filter: blur(5px);
+    filter: grayscale(60%);
+    opacity: 60%;
+} */
 
+/* .bg-opacity {
+    text-shadow: -2px 0 var(--text-shadow), 0 2px var(--text-shadow), 2px 0 var(--text-shadow), 0 -2px var(--text-shadow);  
+} */

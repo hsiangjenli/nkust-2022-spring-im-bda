@@ -10,3 +10,7 @@ body{
   padding-bottom: .3em;
   border-bottom: 1px solid #eee;
 }
+
+.b {
+  font-weight: bolder;
+}

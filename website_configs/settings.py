@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'app__user_key_sentiment',
     'app__top_person',
     'app__twstock_apriori',
+    'app__cb_fsc',
+    'app__news_classification_bert',
 ]
 
 MIDDLEWARE = [

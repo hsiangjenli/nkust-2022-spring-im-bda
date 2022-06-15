@@ -26,4 +26,6 @@ urlpatterns = [
     path('', include('app__api.urls')),
     path('', include('app__user_key_sentiment.urls')),
     path('', include('app__twstock_apriori.urls')),
+    path('', include('app__cb_fsc.urls')),
+    path('', include('app__news_classification_bert.urls')),
 ]

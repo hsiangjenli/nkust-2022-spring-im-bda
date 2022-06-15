@@ -10,8 +10,8 @@ import numpy as np
 global df
 df = api.df
 
-POS = 0.009
-NEG = 0.001
+POS = 0.01
+NEG = 0.009
 
 def filter_df_via_content(query_keywords, cond, cate, weeks):
 

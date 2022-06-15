@@ -1,5 +1,11 @@
 @import 'color.css';
-
+a {
+    color: var(--main-color-black);
+  }
+  a:hover {
+    color: var(--main-color-yellow);
+    text-decoration: none;
+  }
 
 /* 左右置中 */
 .right {
@@ -51,3 +57,18 @@
         page-break-before: always;
     }
 }
+
+.pb-6 {
+    padding-bottom: 6rem;
+}
+
+/*  */
+.r-1 {
+    border-radius: .5rem;
+    filter: blur(3px);
+    filter: grayscale(50%);
+}
+
+textarea {
+    resize: none;
+ }
