@@ -1,4 +1,3 @@
-import imp
 from django.shortcuts import render
 import app__api.views as api
 from .helper import *
@@ -7,7 +6,8 @@ from django.views.decorators.clickjacking import xframe_options_exempt
 
 global df
 
-df = api.df
+df = api.df.sort_values(by='Date').tail(1000)
+
 rise_loc, fall_loc = RiseAndFallLoc(df)
 
 Rise = df['tokens_v2'].apply(toList).iloc[rise_loc]
