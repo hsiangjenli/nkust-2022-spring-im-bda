@@ -1,0 +1,113 @@
+{% extends 'default.html' %}
+
+{% load static %}
+
+{% block cover-image %}
+<img width='100%' src="{% static 'images/Cover__app__fullcontext_search.png' %}">
+<div class='block-content'>
+    <h1 class="red center mb-5">Full Text Search <text style="font-size: 1rem">非關聯式資料庫之全文檢索</text></h1>
+
+    <div class="chip-search mb-3 col-lg-11 inline pr-5">
+        <div class="d-lg-inline-flex vcenter-item" id="list"></div>
+        <div class="d-lg-inline-flex">
+            <input type="text" id="txt" placeholder="輸入關鍵字">
+        </div>
+    </div> <button type="button" id="btn_search" class="btn inline">查詢</button>
+</div>
+
+<div class="block-content bg-red">
+    <h2 class="b red center mb-5"><i class="fas fa-newspaper red"></i> 新聞</h2>
+
+
+    <div class='row' id="news">
+
+    </div>
+
+    
+</div>
+
+
+{% endblock %}
+
+
+
+{% block js %}
+
+<script>
+    var txt = document.getElementById('txt');
+    var list = document.getElementById('list');
+    var items = ['+金管會'];
+
+    txt.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            let val = txt.value;
+            if (val !== '') {
+                if (items.indexOf(val) >= 0) {
+                    alert('Tag name is a duplicate');
+                } else {
+                    items.push(val);
+                    render();
+                    txt.value = '';
+                    txt.focus();
+                }
+            } else {
+                alert('Please type a tag Name');
+            }
+        }
+    });
+
+    function render() {
+        list.innerHTML = '';
+        items.map((item, index) => {
+            list.innerHTML += `<li class='list bg-grey p-1 pr-2 pl-4 m-1 r-1 inline'><span>${item}</span>&nbsp;&nbsp;&nbsp;&nbsp;<a class='bg-red chip-close' href="javascript: remove(${index})">X</a></li>`;
+        });
+        return items
+    }
+
+    function remove(i) {
+        items = items.filter(item => items.indexOf(item) != i);
+        render();
+    }
+
+    window.onload = function () {
+        render();
+        txt.focus();
+    }
+
+    $('#btn_search').on('click', function (e) {
+        var keys = render();
+        console.log(keys)
+        txt.focus();
+        $.ajax({
+            type: "POST",
+            url: "api/fullcontext_search",
+            dataType: "json",
+            data: {
+                "keys": keys.join(' '),
+            },
+            success: function (received) {
+
+                data = received['data'];
+                document.getElementById("news").innerHTML = "";
+                let html_div = document.getElementById("news");
+                for (let i = 0; i < data.length; i++) {
+                    console.log(data[i])
+                    let news_content = `
+                    <div class="col-lg-3 mb-5">
+                        <img class='r-1' width='100%' src="${data[i].img_url}">
+                    </div>
+                    <div class="col-lg-9 vcenter-item mb-5">
+                        <a href='${data[i].news_url}'><h4 class="red">${data[i].Title}</h4></a>
+                        <text style='color: darkgray'>${data[i].Context.slice(0, 70)}...</text>
+                    </div>                    
+                    `
+                    html_div.innerHTML += news_content;
+                    }
+                
+
+            }
+        });
+    });
+
+</script>
+{% endblock %}
