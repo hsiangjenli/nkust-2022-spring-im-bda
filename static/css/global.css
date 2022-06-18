@@ -1,6 +1,8 @@
 @import 'bootstrap.css';
 @import 'chart.css';
 @import 'font.css';
+@import 'chips.css';
+
 p, text {
     text-align: justfy
 }
@@ -62,6 +64,7 @@ h4,
 h5,
 h6 {
     font-weight: bolder;
+    word-break:break-word;
 }
 
 h1 {

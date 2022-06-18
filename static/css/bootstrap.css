@@ -68,6 +68,9 @@ a {
     filter: blur(3px);
     filter: grayscale(50%);
 }
+.r-2 {
+border-radius: 2rem;
+}
 
 textarea {
     resize: none;
