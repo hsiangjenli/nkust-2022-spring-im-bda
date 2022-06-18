@@ -111,7 +111,11 @@
                 <li>最新新聞 <span class="badge bg-black white">New Features</span></li>
             </ol>
         </div>
-        <div class="col-lg-7 center"><img class='w-75 vcenter-item' src="https://i.imgur.com/OES5daA.png"></div>
+        <div class="col-lg-7 center">
+            <!-- <img class='w-75 vcenter-item' src="https://i.imgur.com/OES5daA.png"> -->
+            <img class="w-75 vcenter-item" src="{% static 'images/GIF__RecommendNews.gif' %}">
+            
+        </div>
     </div>
 
     <div class="row mb-5">
@@ -119,9 +123,12 @@
         <div class="col-lg-5">
             <ol start="5">
                 <li>推薦相關新聞 <span class="badge bg-black white">New Features</span></li>
+
             </ol>
         </div>
-        <div class="col-lg-7 center"><img class='w-75 vcenter-item' src="https://i.imgur.com/XNp8UEm.png"></div>
+        <div class="col-lg-7 center">
+            <img class='w-75 vcenter-item' src="https://i.imgur.com/XNp8UEm.png">
+        </div>
     </div>
     <!-- 1.2_Apriori Algorithm 台股關聯性分析 -->
 
@@ -219,8 +226,35 @@
     </div>
 </div>
 
-<div class="font-bold">
-    🎓 國立高雄科技大學 金融系 李享紝 C107125248
+
+
+<div class="block-content bg-red">
+    <!-- 6.0_非關聯式全文檢索 -->
+    <br><br>
+    <h2 class="hr"><i class="far fa-object-group red"></i> 
+        <a href="{% url 'app__fullcontext_search:home' %}">非關聯式資料庫全文檢索</a>
+        <span class="badge bg-black white">New Features</span>
+    </h2>
+
+    <div class="row">
+        <div class="col-lg-5 vcenter-item">
+            <ol>
+                <li><a href="https://stackoverflow.com/questions/48371016/pymongo-how-to-use-full-text-search">Pymongo how to use full text search</a></li>
+                <br>
+                <li><a href="https://stackoverflow.com/questions/16586180/typeerror-objectid-is-not-json-serializable">TypeError: ObjectId('') is not JSON serializable</a></li>
+                <br>
+                <li><a href="https://codepen.io/buglessir/pen/MWwOaKd">Vanilla JavaScript tags and chips management</a></li>
+            </ol>
+        </div>
+        <div class="col-lg-7 vcenter-item center">
+            <img class='w-75' src="https://i.imgur.com/nPRISL9.png">
+            
+            <img class='w-75' src="https://i.imgur.com/kSkhBbZ.png">
+        </div>
+    </div>
 </div>
+
+
+
 ![Image](https://i.imgur.com/vt9OjUS.png)
 {% endblock %}

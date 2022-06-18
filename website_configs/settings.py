@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'app__twstock_apriori',
     'app__cb_fsc',
     'app__news_classification_bert',
+    'app__fullcontext_search',
 ]
 
 MIDDLEWARE = [

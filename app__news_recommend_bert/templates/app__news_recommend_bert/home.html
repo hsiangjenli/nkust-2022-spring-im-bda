@@ -1,0 +1,128 @@
+{% extends 'default.html' %}
+
+{% load static %}
+
+{% block cover-image %}
+<img width='100%' src="{% static 'images/Cover__app__news_recommend_bert.png' %}">
+<div class="bg-grey block-content">
+
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner" id="cate_news" style="height: 12rem;">
+
+    </div>
+
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+</div>
+
+
+{% endblock %}
+
+
+
+{% block js %}
+<script>
+  $.ajax({
+    type: "POST",
+    url: "api/twstock-latest-news",
+    // url: "api/LatestNews",
+    success: function (received) {
+      const items = received["latest_news"];
+      let html_div = document.getElementById("cate_news");
+
+
+      for (let i = 0; i < items.length; i++) {
+        let similar_news = items[i]["similar_news"]
+        let all_similar_news = ''
+        for (let j = 0; j < similar_news.length; j++) {
+
+          let news_content = `
+          <div class='row p-3'>
+            <div class='col-lg-2 p-1'>
+              <img class='w-100 r-1' src='${similar_news[j].photo_link}'>
+            </div>
+            <div class='col-lg-10 vcenter-item'>
+              <a href='${similar_news[j].link}'><h6 class='hr'><span class="badge bg-red">${similar_news[j].score}</span> ${similar_news[j].title}</h6></a>
+            </div>
+          </div>
+          
+          <text></text>
+          `
+          var out_similar_news = all_similar_news+=news_content
+
+        }
+        let modal = `
+        <div class="modal fade" id="exampleModal${items[i].id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-clone black"></i> Similar News</h5>
+                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="modal-body">
+                ${out_similar_news}
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn bg-red" data-dismiss="modal">Close</button>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+          `
+        console.log(out_similar_news);
+        
+
+        let carousel = `
+          <div class='row'>
+            <div class='col-lg-4 m-2 r-1'>
+              <img class="d-block h-100 blur" src="${items[i].photo_link}">
+              <div class="carousel-caption d-none d-md-block">
+                
+              </div>
+            </div>
+            <div class='col-lg-6 vcenter-item'>
+              <a href="${items[i].link}"><h5 class="red">${items[i].title}</h5></a>
+              ${items[i].content.slice(0, 70)}...
+              <div class='right mt-3 mr-5'>
+                <input class="btn bg-red btn-sm" type="submit" news_id="${items[i].id}" value="推薦相關新聞" data-toggle="modal" data-target="#exampleModal${items[i].id}">
+              </div>
+
+              ${modal}
+
+            </div>
+          </div>
+        </div>`;
+
+        if (i == 0) {
+          let active = '<div class="carousel-item active">';
+          let out = active.concat(carousel);
+          html_div.innerHTML += out;
+      
+        }
+        else {
+          let unactive = '<div class="carousel-item">'
+          let out = unactive.concat(carousel);
+          html_div.innerHTML += out;
+        }
+      }
+    },
+  }); 
+</script>
+
+{% endblock %}
