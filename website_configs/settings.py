@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'app__cb_fsc',
     'app__news_classification_bert',
     'app__fullcontext_search',
+    'app__job104',
 ]
 
 MIDDLEWARE = [

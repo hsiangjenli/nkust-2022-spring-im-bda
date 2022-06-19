@@ -1,11 +1,13 @@
 @import 'color.css';
+
 a {
     color: var(--main-color-black);
-  }
-  a:hover {
+}
+
+a:hover {
     color: var(--main-color-yellow);
     text-decoration: none;
-  }
+}
 
 /* 左右置中 */
 .right {
@@ -55,7 +57,15 @@ a {
 @media print {
     .page-br {
         page-break-before: always;
+        margin-top: 10rem;
+        margin-bottom: 6rem;
     }
+    .print-avatar {
+        margin-top: 5rem;
+        width: 30%;
+    }
+    a:link {text-decoration: none !important;}
+    a[href]:after {content: none !important;}
 }
 
 .pb-6 {
@@ -68,10 +78,11 @@ a {
     filter: blur(3px);
     filter: grayscale(50%);
 }
+
 .r-2 {
-border-radius: 2rem;
+    border-radius: 2rem;
 }
 
 textarea {
     resize: none;
- }
+}

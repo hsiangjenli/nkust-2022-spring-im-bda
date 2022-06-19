@@ -29,4 +29,5 @@ urlpatterns = [
     path('', include('app__cb_fsc.urls')),
     path('', include('app__news_classification_bert.urls')),
     path('', include('app__fullcontext_search.urls')),
+    path('', include('app__job104.urls')),
 ]

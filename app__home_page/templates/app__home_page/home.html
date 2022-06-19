@@ -10,13 +10,13 @@
 
 <div class="block-content">
     <div class="row p-1">
-        <div class="col-lg-4 vcenter-item center">
+        <div class="col-lg-5 vcenter-item center">
             <h5 class="red mb-3">NKUST <small><small>Department of Money and Banking</small></small></h5>
 
             <p class="b">C107125248 李享紝</p>
 
         </div>
-        <div class="col-lg-3 center vcenter-item">
+        <div class="col-lg-3 center vcenter-item print-avatar">
             <img class='mb-3' width="100%" src="{% static 'images/Avatar.png' %}">
             <div class="blue fa-lg">
 
@@ -27,7 +27,7 @@
 </div>
 
 
-<div class="block-content bg-red">
+<div class="bg-red page-br block-content pt-5">
     <h2 class="hr mb-5"><i class="fa-solid fa-hammer red"></i> 套件</h2>
     <div class="row b pr-5 pl-5">
         <!-- Python -->
@@ -36,9 +36,10 @@
             <ol class="pl-3">
                 <li>MongoDB, pymongo</li>
                 <li>apyori</li>
-                <li>pyvis</li>
-            </ol>
+                <li>pyvis, Vis Network</li>
             
+            </ol>
+
         </div>
         <!-- JS -->
         <div class="col-lg-4">
@@ -47,6 +48,7 @@
                 <li>Plotly.js</li>
                 <li>Bootstrap 4.3.1</li>
                 <li>ajax, jquery</li>
+                <li>Vis Network</li>
             </ol>
         </div>
         <!-- Images, Icon -->
@@ -62,14 +64,9 @@
 </div>
 
 
-<div class="block-content">
+<div class="block-content pt-5 page-br">
     <!-- 1.0_台灣股市 -->
-    <h2 class="hr mb-5"><i class="fas fa-rocket red"></i> 台灣股市</h2>
-    <!-- 1.1_總覽 -->
-    <a href="{% url 'app__overview:home' %}">
-        <h4 class="mb-5">Overview 總覽</h4>
-    </a>
-
+    <h2 class="hr mb-5"><i class="fas fa-rocket red"></i> <a href="{% url 'app__overview:home' %}">台灣股市總覽</a></h2>
 
     <div class="row mb-5">
         <!-- 1.11_上漲/下跌聲量 -->
@@ -114,7 +111,7 @@
         <div class="col-lg-7 center">
             <!-- <img class='w-75 vcenter-item' src="https://i.imgur.com/OES5daA.png"> -->
             <img class="w-75 vcenter-item" src="{% static 'images/GIF__RecommendNews.gif' %}">
-            
+
         </div>
     </div>
 
@@ -132,31 +129,14 @@
     </div>
     <!-- 1.2_Apriori Algorithm 台股關聯性分析 -->
 
-    <h4 class="mb-5">
-        <a href="{% url 'app__twstock_apriori:home' %}">Apriori Algorithm 台股關聯性分析</a>
-        <span class="badge bg-black white">New Features</span>
-    </h4>
 
-    <div class="row mb-5">
-        <!-- 1.21_上漲/下跌關聯字 -->
-        <div class="col-lg-5">
-            <ol>
-                <li>上漲/下跌關聯字</li>
-            </ol>
-            <ul>
-                <li>繪圖套件 <span class="badge">pyvis</span></li>
-                <li>Apriori演算法套件 <span class="badge">apyori</span></li>
-            </ul>
-        </div>
-        <div class="col-lg-7 vcenter-item center"><img class='w-75' src="https://i.imgur.com/aRfNWTO.png"></div>
-    </div>
 
 </div>
 
 
 
 <!-- 2.0_熱門人物 -->
-<div class="block-content bg-red">
+<div class="block-content bg-red pt-5">
     <a href="{% url 'app__top_person:home' %}">
         <h2 class="hr mb-5"><i class="fas fa-street-view red"></i> 熱門人物</h2>
     </a>
@@ -168,10 +148,10 @@
 
 
 
-<div class="block-content">
+<div class="block-content pt-5">
     <!-- 3.0_個人化關鍵字 -->
     <a href="{% url 'app__user_key:home' %}">
-        <h2 class="hr"><i class="fas fa-key red"></i> 個人化關鍵字</h2>
+        <h2 class="hr mb-5"><i class="fas fa-key red"></i> 個人化關鍵字</h2>
     </a>
     <div class="row mb-5">
         <div class="col-lg-5 vcenter-item">![Image](https://i.imgur.com/DpqIs4b.png)</div>
@@ -182,7 +162,7 @@
 
 
 <!-- 4.0_情感性分析 -->
-<div class="block-content bg-red">
+<div class="block-content bg-red pt-5">
 
     <h2 class="hr mb-5"><i class="fas fa-dizzy red"></i>
         <a href="{% url 'app__user_key_sentiment:home' %}">情感性分析</a>
@@ -212,10 +192,10 @@
 
 
 
-<div class="block-content">
+<div class="block-content pt-5">
     <!-- 5.0_新聞分類 -->
     <br><br>
-    <h2 class="hr"><i class="far fa-object-group red"></i> 
+    <h2 class="hr mb-5"><i class="far fa-object-group red"></i>
         <a href="{% url 'app__news_classification_bert:home' %}">新聞類別判斷系統</a>
         <span class="badge bg-black white">New Features</span>
     </h2>
@@ -228,27 +208,31 @@
 
 
 
-<div class="block-content bg-red">
+<div class="block-content bg-red pt-5">
     <!-- 6.0_非關聯式全文檢索 -->
     <br><br>
-    <h2 class="hr"><i class="far fa-object-group red"></i> 
+    <h2 class="hr mb-5"><i class="far fa-object-group red"></i>
         <a href="{% url 'app__fullcontext_search:home' %}">非關聯式資料庫全文檢索</a>
         <span class="badge bg-black white">New Features</span>
     </h2>
 
     <div class="row">
         <div class="col-lg-5 vcenter-item">
-            <ol>
-                <li><a href="https://stackoverflow.com/questions/48371016/pymongo-how-to-use-full-text-search">Pymongo how to use full text search</a></li>
-                <br>
-                <li><a href="https://stackoverflow.com/questions/16586180/typeerror-objectid-is-not-json-serializable">TypeError: ObjectId('') is not JSON serializable</a></li>
-                <br>
-                <li><a href="https://codepen.io/buglessir/pen/MWwOaKd">Vanilla JavaScript tags and chips management</a></li>
-            </ol>
+            <hr>
+            <ul>
+                <li><a href="https://stackoverflow.com/questions/48371016/pymongo-how-to-use-full-text-search">Pymongo
+                        how to use full text search</a></li>
+              
+                <li><a href="https://stackoverflow.com/questions/16586180/typeerror-objectid-is-not-json-serializable">TypeError:
+                        ObjectId('') is not JSON serializable</a></li>
+         
+                <li><a href="https://codepen.io/buglessir/pen/MWwOaKd">Vanilla JavaScript tags and chips management</a>
+                </li>
+            </ul>
         </div>
         <div class="col-lg-7 vcenter-item center">
             <img class='w-75' src="https://i.imgur.com/nPRISL9.png">
-            
+
             <img class='w-75' src="https://i.imgur.com/kSkhBbZ.png">
         </div>
     </div>
@@ -256,5 +240,63 @@
 
 
 
-![Image](https://i.imgur.com/vt9OjUS.png)
+<div class="block-content pt-5">
+    <!-- 7.0_Apriori -->
+    <br><br>
+    <h2 class="hr mb-5"><i class="far fa-object-group red"></i>
+        Apriori演算法
+        <span class="badge bg-black white">New Features</span>
+    </h2>
+
+    <h4 class="mb-5">台股上漲/下跌關聯字</h4>
+    <div class="row mb-5">
+        <div class="col-lg-5">
+            <ol>
+                <li>上漲/下跌關聯字</li>
+                <p>
+                    以台股新聞中的<text class="red b">上漲</text>、<text
+                        class="red b">下跌</text>作為關鍵字，過濾新聞，並且使用中研院的斷詞套件進行斷詞。找出同時跟關鍵字同時出現的關聯字。
+                </p>
+            </ol>
+            <hr>
+            <ul>
+                <li><a href="https://www.section.io/engineering-education/apriori-algorithm-in-python/">Getting Started with Apriori Algorithm in Python</a></li>
+            
+                <li><a href="https://pyvis.readthedocs.io/en/latest/tutorial.html">Tutorial - pyvis 0.1.3.1 documentation</a></li>
+         
+                <li>Python/套件/繪圖 <span class="badge bg-black white">pyvis</span></li>
+            
+                <li>Python/套件/演算法/Apriori <span class="badge bg-black white">apyori</span></li>
+            </ul>
+        </div>
+        <div class="col-lg-7 vcenter-item center"><img class='w-75' src="https://i.imgur.com/aRfNWTO.png"></div>
+    </div>
+
+
+
+    <h4 class="mb-5">104人力銀行關聯字</h4>
+    <div class="row">
+
+        <div class="col-lg-5">
+            <ol start="2">
+                <li class="mb-2">工作技能關聯字</li>
+                <p class="mb-2">以<text class="red b">金融&資料分析</text>作為關鍵字，在104人力銀行爬取相關工作的技能。並且使用中研院斷詞套件進行斷詞，同時使用詞性過濾以及停斷詞刪除贅詞。</p>
+                <p class="mb-2">使用藉由滑動橫桿的方式傳入<text class="red b">SUPPORT（支持度、顯著性）</text>。</p>
+                <p class="mb-2">最後使用<text class="red b">Apriori</text>演算法進行分析，並且使用<text class="red b">Vis Network</text>繪製成關聯圖。</p>
+            </ol>
+            <hr>
+            <ul>
+                <li><a href="https://visjs.github.io/vis-network/examples/">JavaScript/套件/Vis Network</a><span class="badge bg-black white">Vis Network</span></li>
+          
+                <li>Python/套件/演算法/Apriori <span class="badge bg-black white">apyori</span></li>
+                <br>
+            </ul>
+        </div>
+        <div class="col-lg-7 vcenter-item center">
+            <img class='w-75 mb-5' src="https://i.imgur.com/mhez4FD.png">
+            <img class='w-75' src="https://i.imgur.com/bwm6WMX.png">
+        </div>
+    </div>
+</div>
+
 {% endblock %}
